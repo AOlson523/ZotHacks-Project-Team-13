@@ -8,31 +8,67 @@
 // });
 
 let club_category = 'math';
+filters = [];
 
-function gotclicked(type, button) {
-    // let userInput = document.getElementById('input1').value;
-    if (button.classList.contains('selected-button')) {
-        button.classList.remove("selected-button")
-    } else {
-        button.classList.add("selected-button")
 
-    }
-    club_category = type;
-    // alert(type)
-    // }
-    // function submit(type){
-    // let userInput = document.getElementById('input1').value;
 
-    // send user selection to backend, category
-    document.getElementById('dispaly').innerHTML = '<h1 class="text">this is answer</h1>result, cub1, club2, club2';
-}
 var options = {
-    valueNames: [ 'name', 'bio' ],
+    valueNames: [ 'name', 'bio', 'main_type', 'sub_type' ],
     // Since there are no elements in the list, this will be used as template.
     item: '<li><h3 class="name"></h3></li>'
   };
   
   var values = data;
   
-  var userList = new List('body', options, values);
-  
+var club_list = new List('body', options, values);
+
+function filter_function(){
+    club_list.filter(function(item) {
+        if (item.values()['sub_type'] != null)
+        {
+            for (let i = 0; i < item.values()['sub_type'].length; i++)
+            {
+                if (filters.includes(item.values()['sub_type'][i]))
+                {
+                    return true
+                }
+            }
+        }
+        
+        if (filters.includes(item.values()['main_type'])) {
+           return true;
+        } 
+        else if (filters.length == 0)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+        });
+}
+
+function gotclicked(type, button) {
+    if (button.classList.contains('selected-button')) {
+        button.classList.remove("selected-button")
+        filters = filters.filter(function(item){
+            if (item != type)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        })
+        filter_function();
+
+    } else {
+        button.classList.add("selected-button")
+        filters.push(type);
+        filter_function();
+    }
+    club_category = type;
+
+}
