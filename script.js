@@ -23,13 +23,17 @@ function gotclicked(type, button) {
     // function submit(type){
     // let userInput = document.getElementById('input1').value;
 
-    // send user selection to backend, category
+    // send user sele function to backend, category
     document.getElementById('dispaly').innerHTML = '<h1 class="text">this is answer</h1>result, cub1, club2, club2';
 }
 var options = {
-    valueNames: [ 'name', 'bio' ],
     // Since there are no elements in the list, this will be used as template.
-    item: '<li><h3 class="name"></h3><p class="bio"></p></li>'
+    item: function (itemvalues) {
+        if (itemvalues.bio == null) {
+            itemvalues.bio = ''
+        }
+        return  `<li><h3 class="name"><a href="${itemvalues.website}">${itemvalues.name}</a></h3><p class="bio">${itemvalues.bio}</p></li>`
+    }
   };
   
   var values = data;
