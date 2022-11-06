@@ -29,7 +29,7 @@ function gotclicked(type, button) {
 var options = {
     valueNames: [ 'name', 'bio' ],
     // Since there are no elements in the list, this will be used as template.
-    item: '<li><h3 class="name"></h3></li>'
+    item: '<li><h3 class="name"></h3><p class="bio"></p></li>'
   };
   
   var values = data;
