@@ -24,7 +24,6 @@ function gotclicked(type, button) {
     // let userInput = document.getElementById('input1').value;
 
     // send user selection to backend, category
-    document.getElementById('dispaly').innerHTML = '<h1 class="text">this is answer</h1>result, cub1, club2, club2';
 }
 var options = {
     valueNames: [ 'name', 'bio' ],
