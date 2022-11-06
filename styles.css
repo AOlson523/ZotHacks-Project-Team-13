@@ -83,6 +83,9 @@ background-color: rgb(124, 189, 255) !important;
 .search {
     background-color: floralwhite;
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
 
-
+h3.name a {
+    color:cadetblue !important;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
