@@ -7,7 +7,9 @@ with open("zothacksf22.html", encoding="utf8") as htmltext:
     clubs_json_list = []
     club_groups = datasoup.find_all('h2', class_ = "media-heading header-cg--h4")
     for club in club_groups:
-        club_info = club.find_all('a', limit = 1)
+        club_info = club.find_all('a', limit = 2)
+        club_name = club_info[0].get_text(strip = True)
+        club_website = club_info[1].get("href")
         club_mission = club.find_all('p', class_ = 'noOutlineOnFocus', limit = 1)
         club_type = club.find_all('p', class_ = 'h5 media-heading grey-element')
         club_type = club_type[0].get_text(strip = True)
@@ -15,6 +17,8 @@ with open("zothacksf22.html", encoding="utf8") as htmltext:
             bio = None
         else:
             bio = club_mission[0].get_text(strip = True)[7:]
+            bio = bio.replace('\u200b', '')
+
         if '-' in club_type:
             club_type = club_type.split('-')
             club_main_type = club_type[0].strip()
@@ -22,10 +26,11 @@ with open("zothacksf22.html", encoding="utf8") as htmltext:
         else:
             club_main_type = club_type
             club_sub_type = None
-        clubs_json_list.append({'name': club_info[0].get_text(strip = True), 
+        clubs_json_list.append({'name': club_name, 
                                 'main_type': club_main_type, 
                                 'sub_type': club_sub_type, 
-                                'bio': bio})
+                                'bio': bio,
+                                'website': club_website})
     
     clubs_json = json.dumps(clubs_json_list, indent = 4)
 
