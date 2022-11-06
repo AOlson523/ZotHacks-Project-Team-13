@@ -44,10 +44,10 @@ table, th, td {
     background-color: #11296b;
     color: #ededed;
     text-align: center;
-    position: relative; right:90px; top 2px;
+    position: center;
     float: center;
-    display: grid;
-    grid-template-columns: auto 1fr;
+    /* display: grid; */
+    /* grid-template-columns: auto 1fr; */
     padding: 5% 29%;
 }
 
@@ -142,4 +142,8 @@ table, th, td {
 @keyframes spin {
     0%   { transform: rotate(0deg); }
     100%  { transform: rotate(360deg); }
+}
+
+.selected-button {
+background-color: aqua !important;
 }
