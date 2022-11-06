@@ -27,30 +27,12 @@ function gotclicked(type, button) {
     document.getElementById('dispaly').innerHTML = '<h1 class="text">this is answer</h1>result, cub1, club2, club2';
 }
 var options = {
-    valueNames: [ 'name', 'born' ],
+    valueNames: [ 'name', 'bio' ],
     // Since there are no elements in the list, this will be used as template.
-    item: '<li><h3 class="name"></h3><p class="born"></p></li>'
+    item: '<li><h3 class="name"></h3></li>'
   };
   
-  var values = [
-    {
-      name: 'Jonny Strömberg',
-      born: 1986
-    },
-    {
-      name: 'Jonas Arnklint',
-      born: 1985
-    },
-    {
-      name: 'Martina Elm',
-      born: 1986
-    }
-  ];
+  var values = data;
   
   var userList = new List('body', options, values);
-  
-  userList.add({
-    name: 'Gustaf Lindqvist',
-    born: 1983
-  });
   
