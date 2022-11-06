@@ -13,9 +13,14 @@ filters = [];
 
 
 var options = {
-    valueNames: [ 'name', 'bio', 'main_type', 'sub_type' ],
+    valueNames: [ 'name', 'bio' ],
     // Since there are no elements in the list, this will be used as template.
-    item: '<li><h3 class="name"></h3></li>'
+    item: function (itemvalues) {
+        if (itemvalues.bio == null) {
+            itemvalues.bio = ''
+        }
+        return  `<li><h3 class="name"><a href="${itemvalues.website}">${itemvalues.name}</a></h3><p class="bio">${itemvalues.bio}</p></li>`
+    }
   };
   
   var values = data;
