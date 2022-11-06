@@ -13,7 +13,6 @@ filters = [];
 
 
 var options = {
-    valueNames: [ 'name', 'bio' ],
     // Since there are no elements in the list, this will be used as template.
     item: function (itemvalues) {
         if (itemvalues.bio == null) {
