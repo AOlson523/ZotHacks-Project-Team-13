@@ -2,10 +2,10 @@ import json
 from bs4 import BeautifulSoup
 
 with open("zothacksf22.html", encoding="utf8") as htmltext:
-    datasoup = BeautifulSoup(htmltext, 'html.parser')
+    datasoup = BeautifulSoup(htmltext, 'html.parser') # turn html text to datasoup project to use index functions
 
     clubs_json_list = []
-    club_groups = datasoup.find_all('h2', class_ = "media-heading header-cg--h4")
+    club_groups = datasoup.find_all('h2', class_ = "media-heading header-cg--h4") # finds all club names in Campus Groups (each located in h2)
     for club in club_groups:
         club_info = club.find_all('a', limit = 2)
         club_name = club_info[0].get_text(strip = True)
